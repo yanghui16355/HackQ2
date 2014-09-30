@@ -1,10 +1,10 @@
 $(document).ready(function() {
-	eventListensers(eventListensers.$("div.container"));
+	//eventListensers(eventListensers.$("div.container"));
 	//$('#progress1').attr('style',"width: 37%");
 	//$('#progress1').css({
 	// 'background-color': '#66FF66'
 	//});
-
+	updateMessages();
 });
 
 function poll() {
@@ -80,15 +80,18 @@ function createBar(message) {
 function updateMessages() {
 	var response = $.ajax({
 		type : "GET",
-		url : "hack.php",
+		url : "/HackQ2-0.0.1/api/partnerInfo",
 		dataType : "json",
 		async : false,
 		cache : false,
-		complete : poll,
+		/*complete : poll,*/
 		timeout : 5000
 	}).responseText;
-	console.log(response);
+	//console.log(response);
 	var data = jQuery.parseJSON(response);
-	console.log(response);
+	console.log(data[0]);
+	for( var k in data[0] ){
+		console.log(k);
+	}
 	return data;
 }
