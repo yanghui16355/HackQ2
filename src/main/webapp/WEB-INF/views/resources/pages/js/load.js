@@ -1,9 +1,18 @@
 $(document).ready(function() {
+<<<<<<< HEAD
 	//eventListensers($("div.container"));
+=======
+	
+>>>>>>> 2b667872261b38d219d4acb525d7c7573f319f8b
 	//$('#progress1').attr('style',"width: 37%");
 	//$('#progress1').css({
 	// 'background-color': '#66FF66'
 	//});
+<<<<<<< HEAD
+=======
+	console.log($(".btn.btn-primary.btn-lg"));
+	loadD();
+>>>>>>> 2b667872261b38d219d4acb525d7c7573f319f8b
 	updateMessages();
 });
 
@@ -17,6 +26,7 @@ function eventListensers(object) {
 	}, false);
 }
 
+<<<<<<< HEAD
 function loadD(args){
 	for(var k in $("a.btn btn-primary btn-lg")){
 		k.click(function(e){
@@ -25,6 +35,34 @@ function loadD(args){
 			k.click();
 		});
 	}
+=======
+function loadD(){
+	
+//	for(var k in $(".btn.btn-primary.btn-lg")){
+	//	console.log(k);
+	console.log(".btn.btn-primary.btn-lg");
+	$(".btn.btn-primary.btn-lg").click(function(e){
+//		k.click(function(e){
+			e.preventDefault();
+		//	call(k.attr("ID"));
+			var data = getPartnerDetails("Hilton");
+		//	$(".btn.btn-primary.btn-lg").click()(function(){
+			console.log($('#myModalLabel'));
+			console.log(data);
+			console.log(data.partnerID);
+			$('#myModalLabel').html(data.partnerID+": "+data.rqinS.category);
+			$("#RQIn").children(".message").html("Source: "+data.rqinS.sourceID+"</br>"+"Destinatoin: "+data.rqinS.destinationID
+					+"</br>"+"Success: "+data.rqinS.amount+"</br>"+"Failure: "+data.rqinF.amount);
+			$("#RQOut").children(".message").html("Source: "+data.rqoutS.sourceID+"</br>"+"Destinatoin: "+data.rqoutS.destinationID
+					+"</br>"+"Success: "+data.rqoutS.amount+"</br>"+"Failure: "+data.rqoutF.amount);
+			$("#RSIn").children(".message").html("Source: "+data.rsinS.sourceID+"</br>"+"Destinatoin: "+data.rsinS.destinationID
+					+"</br>"+"Success: "+data.rsinS.amount+"</br>"+"Failure: "+data.rsinF.amount);
+			$("#RSOut").children(".message").html("Source: "+data.rsoutS.sourceID+"</br>"+"Destinatoin: "+data.rsoutS.destinationID
+					+"</br>"+"Success: "+data.rsoutS.amount+"</br>"+"Failure: "+data.rsoutF.amount);
+		//	});
+		});
+	//}
+>>>>>>> 2b667872261b38d219d4acb525d7c7573f319f8b
 	
 }
 
@@ -105,7 +143,11 @@ function createBar(message) {
 function updateMessages() {
 	var response = $.ajax({
 		type : "GET",
+<<<<<<< HEAD
 		url : "/HackQ2-0.0.1/api/partnerInfo",
+=======
+		url : "/hackq2/api/partnerInfo",
+>>>>>>> 2b667872261b38d219d4acb525d7c7573f319f8b
 		dataType : "json",
 		async : false,
 		cache : false,
@@ -119,4 +161,23 @@ function updateMessages() {
 		console.log(k);
 	}
 	return data;
+}
+
+function getPartnerDetails(partnerID) {
+	var response = $.ajax({
+		type : "GET",
+		url : "/hackq2/api/partnerInfo/"+partnerID,
+		dataType : "json",
+		async : false,
+		cache : false,
+		/*complete : poll,*/
+	}).responseText;
+	//console.log(response);
+	var partner = jQuery.parseJSON(response);
+	console.log(partner);
+	console.log(partner.partnerID);
+	for( var k in partner){
+		console.log(k);
+	}
+	return partner;
 }
