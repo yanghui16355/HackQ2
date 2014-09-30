@@ -1,10 +1,10 @@
 $(document).ready(function() {
-	eventListensers(eventListensers.$("div.container"));
+	//eventListensers($("div.container"));
 	//$('#progress1').attr('style',"width: 37%");
 	//$('#progress1').css({
 	// 'background-color': '#66FF66'
 	//});
-
+	updateMessages();
 });
 
 function poll() {
@@ -12,9 +12,20 @@ function poll() {
 }
 
 function eventListensers(object) {
-	object.addEventListener('load', function() {
+	object.onload(function() {
 		console.log('Test!');
 	}, false);
+}
+
+function loadD(args){
+	for(var k in $("a.btn btn-primary btn-lg")){
+		k.click(function(e){
+			e.preventDefault();
+			call(k.attr("ID"));
+			k.click();
+		});
+	}
+	
 }
 
 /**
@@ -57,6 +68,15 @@ function removeBars(bar) {
 }
 
 function createBar(message) {
+	
+	// <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal" id="ParterID">
+        	// Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
+        	
+    $('<p/>');
+    
+    $('<a/>',{'class':''});
+	
+	
 	$('<div/>', {
 		'class' : 'progress',
 		'id' : 'progress_test_1'
@@ -75,20 +95,28 @@ function createBar(message) {
 	
 	
 	$('#progress2').tooltip();
+	
+	
+	$('#progress1').css({
+	 'background-color': '#66FF66'
+	});
 }
 
 function updateMessages() {
 	var response = $.ajax({
 		type : "GET",
-		url : "hack.php",
+		url : "/HackQ2-0.0.1/api/partnerInfo",
 		dataType : "json",
 		async : false,
 		cache : false,
-		complete : poll,
+		/*complete : poll,*/
 		timeout : 5000
 	}).responseText;
-	console.log(response);
+	//console.log(response);
 	var data = jQuery.parseJSON(response);
-	console.log(response);
+	console.log(data[0]);
+	for( var k in data[0] ){
+		console.log(k);
+	}
 	return data;
 }
