@@ -50,7 +50,7 @@
 
 
 		<!-- hidden model -->
-		
+		<%@ include file="detail.jsp" %>
 		<!-- hidden model -->
 			
 		<!-- Main jumbotron for a primary marketing message or call to action -->
