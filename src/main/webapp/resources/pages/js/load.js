@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	//eventListensers($("div.container"));
+	
 	//$('#progress1').attr('style',"width: 37%");
 	//$('#progress1').css({
 	// 'background-color': '#66FF66'
@@ -21,8 +21,11 @@ function loadD(args){
 	for(var k in $("a.btn btn-primary btn-lg")){
 		k.click(function(e){
 			e.preventDefault();
-			call(k.attr("ID"));
-			k.click();
+		//	call(k.attr("ID"));
+			data = getPartnerDetails("Hilton");
+			k.click()(function(){
+				$('#myModalLabel').innerHTML = data.partenrID;
+			});
 		});
 	}
 	
@@ -107,7 +110,7 @@ function updateMessages() {
 		type : "GET",
 		url : "/HackQ2-0.0.1/api/partnerInfo",
 		dataType : "json",
-		async : false,
+		async : true,
 		cache : false,
 		/*complete : poll,*/
 		timeout : 5000
@@ -116,6 +119,24 @@ function updateMessages() {
 	var data = jQuery.parseJSON(response);
 	console.log(data[0]);
 	for( var k in data[0] ){
+		console.log(k);
+	}
+	return data;
+}
+
+function getPartnerDetails(partnerID) {
+	var response = $.ajax({
+		type : "GET",
+		url : "/HackQ2-0.0.1/api/partnerInfo/"+partnerID,
+		dataType : "json",
+		async : true,
+		cache : false,
+		/*complete : poll,*/
+	}).responseText;
+	//console.log(response);
+	var data = jQuery.parseJSON(response);
+	console.log(data);
+	for( var k in data){
 		console.log(k);
 	}
 	return data;
