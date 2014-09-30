@@ -20,14 +20,14 @@ public class MessageService {
 	
 	
 	private void createParterInfo(List<PartnerInfo> partnerInfo){
-		MessageAggregator hs1 = new MessageAggregator("RQIn","Success",100,"Hilton","Polaris","Hilton");
-		MessageAggregator hf1 = new MessageAggregator("RQIn","Fail",5,"Hilton","Polaris","Hilton");
-		MessageAggregator hs2 = new MessageAggregator("RQOut","Success",100,"Hilton","Polaris","Hilton");
-		MessageAggregator hf2 = new MessageAggregator("RQOut","Fail",3,"Hilton","Polaris","Hilton");
-		MessageAggregator hs3 = new MessageAggregator("RSIn","Success",100,"Hilton","Polaris","Hilton");
-		MessageAggregator hf3 = new MessageAggregator("RSIn","Fail",8,"Hilton","Polaris","Hilton");
-		MessageAggregator hs4 = new MessageAggregator("RSOut","Success",100,"Hilton","Polaris","Hilton");
-		MessageAggregator hf4 = new MessageAggregator("RSOut","Fail",10,"Hilton","Polaris","Hilton");
+		MessageAggregator hs1 = new MessageAggregator("RQIn","Success",1000,"Hilton","Polaris","Hilton","00CC00");
+		MessageAggregator hf1 = new MessageAggregator("RQIn","Fail",50,"Hilton","Polaris","Hilton","FF3333");
+		MessageAggregator hs2 = new MessageAggregator("RQOut","Success",1000,"Hilton","Polaris","Hilton","00CC00");
+		MessageAggregator hf2 = new MessageAggregator("RQOut","Fail",30,"Hilton","Polaris","Hilton","FF3333");
+		MessageAggregator hs3 = new MessageAggregator("RSIn","Success",1000,"Hilton","Polaris","Hilton","00CC00");
+		MessageAggregator hf3 = new MessageAggregator("RSIn","Fail",80,"Hilton","Polaris","Hilton","FF3333");
+		MessageAggregator hs4 = new MessageAggregator("RSOut","Success",1000,"Hilton","Polaris","Hilton","00CC00");
+		MessageAggregator hf4 = new MessageAggregator("RSOut","Fail",100,"Hilton","Polaris","Hilton","FF3333");
 		
 		PartnerInfo h = new PartnerInfo("Hilton");
 		h.setRQInS(hs1);
@@ -40,14 +40,14 @@ public class MessageService {
 		h.setRSOutF(hf4);
 		
 		
-		MessageAggregator ms1 = new MessageAggregator("RQIn","Success",100,"Marriott","Polaris","Marriott");
-		MessageAggregator mf1 = new MessageAggregator("RQIn","Fail",5,"Marriott","Polaris","Marriott");
-		MessageAggregator ms2 = new MessageAggregator("RQOut","Success",100,"Marriott","Polaris","Marriott");
-		MessageAggregator mf2 = new MessageAggregator("RQOut","Fail",3,"Marriott","Polaris","Marriott");
-		MessageAggregator ms3 = new MessageAggregator("RSIn","Success",100,"Marriott","Polaris","Marriott");
-		MessageAggregator mf3 = new MessageAggregator("RSIn","Fail",8,"Marriott","Polaris","Marriott");
-		MessageAggregator ms4 = new MessageAggregator("RSOut","Success",100,"Marriott","Polaris","Marriott");
-		MessageAggregator mf4 = new MessageAggregator("RSOut","Fail",10,"Marriott","Polaris","Marriott");
+		MessageAggregator ms1 = new MessageAggregator("RQIn","Success",100,"Marriott","Polaris","Marriott","33FF33");
+		MessageAggregator mf1 = new MessageAggregator("RQIn","Fail",5,"Marriott","Polaris","Marriott","FF9999");
+		MessageAggregator ms2 = new MessageAggregator("RQOut","Success",100,"Marriott","Polaris","Marriott","33FF33");
+		MessageAggregator mf2 = new MessageAggregator("RQOut","Fail",3,"Marriott","Polaris","Marriott","FF9999");
+		MessageAggregator ms3 = new MessageAggregator("RSIn","Success",100,"Marriott","Polaris","Marriott","33FF33");
+		MessageAggregator mf3 = new MessageAggregator("RSIn","Fail",8,"Marriott","Polaris","Marriott","FF9999");
+		MessageAggregator ms4 = new MessageAggregator("RSOut","Success",100,"Marriott","Polaris","Marriott","33FF33");
+		MessageAggregator mf4 = new MessageAggregator("RSOut","Fail",10,"Marriott","Polaris","Marriott","FF9999");
 		
 		PartnerInfo m = new PartnerInfo("Marriott");
 		m.setRQInS(ms1);

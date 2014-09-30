@@ -14,13 +14,16 @@ public class MessageAggregator {
 	
 	private String parnterID;
 	
-	public MessageAggregator(String type,String status,int amount,String sourceID,String destinationID,String partnerID){
+	private String color;
+	
+	public MessageAggregator(String type,String status,int amount,String sourceID,String destinationID,String partnerID,String color){
 		this.type = type;
 		this.status = status;
 		this.amount = amount;
 		this.sourceID = sourceID;
 		this.destinationID = destinationID;
 		this.parnterID = partnerID;
+		this.color = color;
 	}
 
 	public String getType() {
@@ -69,6 +72,14 @@ public class MessageAggregator {
 
 	public void setParnterID(String parnterID) {
 		this.parnterID = parnterID;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 	
 	
