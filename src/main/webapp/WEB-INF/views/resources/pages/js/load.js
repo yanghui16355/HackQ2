@@ -32,8 +32,8 @@ function loadD(){
 		//	$(".btn.btn-primary.btn-lg").click()(function(){
 			console.log($('#myModalLabel'));
 			console.log(data);
-			console.log(data.partnerID);
-			$('#myModalLabel').html(data.partnerID+": "+data.rqinS.category);
+			console.log(data.category);
+			$('#myModalLabel').html(data.partnerID+": "+data.category);
 			$("#RQIn").children(".message").html("Source: "+data.rqinS.sourceID+"</br>"+"Destinatoin: "+data.rqinS.destinationID
 					+"</br>"+"Success: "+data.rqinS.amount+"</br>"+"Failure: "+data.rqinF.amount);
 			$("#RQOut").children(".message").html("Source: "+data.rqoutS.sourceID+"</br>"+"Destinatoin: "+data.rqoutS.destinationID
