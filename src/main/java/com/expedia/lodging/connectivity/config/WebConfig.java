@@ -14,14 +14,10 @@ import com.expedia.lodging.connectivity.service.MessageService;
 @ComponentScan("com.expedia.lodging.connectivity")
 @EnableWebMvc
 @EnableTransactionManagement
-//@Import({BeanConfig.class})
+@Import({BeanConfig.class})
 public class WebConfig {
 	
-	@Bean
-	public MessageService getMessageService(){
-		MessageService ms = new MessageService();
-		return ms;
-	}
+	
 	
 	@Bean
 	public InternalResourceViewResolver setupViewResolver() {

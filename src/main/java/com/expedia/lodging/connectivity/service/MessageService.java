@@ -1,7 +1,9 @@
 package com.expedia.lodging.connectivity.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
@@ -10,16 +12,25 @@ import com.expedia.lodging.connectivity.model.PartnerInfo;
 
 public class MessageService {
 	
-	public List<PartnerInfo> getPartnerInfo(){
-		List<PartnerInfo> partnerInfo = new ArrayList<PartnerInfo>();
+	List<PartnerInfo> partnerInfo;
+	Map<String,PartnerInfo> partnerMap;
+	
+	public List<PartnerInfo> getPartnerInfoList(){
+		//List<PartnerInfo> partnerInfo = new ArrayList<PartnerInfo>();
 		
-		createParterInfo(partnerInfo);
+		createParterInfoList();
 		
 		return partnerInfo;
 	}
 	
+	public PartnerInfo getPartnerInfo(String partnerID){
+		return partnerMap.get(partnerID);
+	}
 	
-	private void createParterInfo(List<PartnerInfo> partnerInfo){
+	
+	private void createParterInfoList(){
+		partnerInfo = new ArrayList<PartnerInfo>();
+		partnerMap = new HashMap<String,PartnerInfo>();
 		MessageAggregator hs1 = new MessageAggregator("RQIn","Success",1000,"Hilton","Polaris","Hilton","00CC00");
 		MessageAggregator hf1 = new MessageAggregator("RQIn","Fail",50,"Hilton","Polaris","Hilton","FF3333");
 		MessageAggregator hs2 = new MessageAggregator("RQOut","Success",1000,"Hilton","Polaris","Hilton","00CC00");
@@ -61,5 +72,8 @@ public class MessageService {
 		
 		partnerInfo.add(h);
 		partnerInfo.add(m);
+		
+		partnerMap.put(h.getPartnerID(), h);
+		partnerMap.put(m.getPartnerID(), m);
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,8 +20,14 @@ public class RestController {
 	
 	@RequestMapping("/partnerInfo")
 	@ResponseBody
-	public List<PartnerInfo> partnerInfo() {
-		return messageService.getPartnerInfo();
+	public List<PartnerInfo> partnerInfoList() {
+		return messageService.getPartnerInfoList();
+	}
+	
+	@RequestMapping("/partnerInfo/{partnerID}")
+	@ResponseBody
+	public PartnerInfo partnerInfo(@PathVariable String partnerID) {
+		return messageService.getPartnerInfo(partnerID);
 	}
 	
 	
