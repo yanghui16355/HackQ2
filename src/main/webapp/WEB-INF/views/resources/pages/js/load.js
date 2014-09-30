@@ -1,10 +1,12 @@
 $(document).ready(function() {
-	eventListensers(eventListensers.$("div.container"));
+	
 	//$('#progress1').attr('style',"width: 37%");
 	//$('#progress1').css({
 	// 'background-color': '#66FF66'
 	//});
-
+	console.log($(".btn.btn-primary.btn-lg"));
+	loadD();
+	updateMessages();
 });
 
 function poll() {
@@ -12,9 +14,38 @@ function poll() {
 }
 
 function eventListensers(object) {
-	object.addEventListener('load', function() {
+	object.onload(function() {
 		console.log('Test!');
 	}, false);
+}
+
+function loadD(){
+	
+//	for(var k in $(".btn.btn-primary.btn-lg")){
+	//	console.log(k);
+	console.log(".btn.btn-primary.btn-lg");
+	$(".btn.btn-primary.btn-lg").click(function(e){
+//		k.click(function(e){
+			e.preventDefault();
+		//	call(k.attr("ID"));
+			var data = getPartnerDetails("Hilton");
+		//	$(".btn.btn-primary.btn-lg").click()(function(){
+			console.log($('#myModalLabel'));
+			console.log(data);
+			console.log(data.partnerID);
+			$('#myModalLabel').html(data.partnerID+": "+data.rqinS.category);
+			$("#RQIn").children(".message").html("Source: "+data.rqinS.sourceID+"</br>"+"Destinatoin: "+data.rqinS.destinationID
+					+"</br>"+"Success: "+data.rqinS.amount+"</br>"+"Failure: "+data.rqinF.amount);
+			$("#RQOut").children(".message").html("Source: "+data.rqoutS.sourceID+"</br>"+"Destinatoin: "+data.rqoutS.destinationID
+					+"</br>"+"Success: "+data.rqoutS.amount+"</br>"+"Failure: "+data.rqoutF.amount);
+			$("#RSIn").children(".message").html("Source: "+data.rsinS.sourceID+"</br>"+"Destinatoin: "+data.rsinS.destinationID
+					+"</br>"+"Success: "+data.rsinS.amount+"</br>"+"Failure: "+data.rsinF.amount);
+			$("#RSOut").children(".message").html("Source: "+data.rsoutS.sourceID+"</br>"+"Destinatoin: "+data.rsoutS.destinationID
+					+"</br>"+"Success: "+data.rsoutS.amount+"</br>"+"Failure: "+data.rsoutF.amount);
+		//	});
+		});
+	//}
+	
 }
 
 /**
@@ -57,6 +88,15 @@ function removeBars(bar) {
 }
 
 function createBar(message) {
+	
+	// <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal" id="ParterID">
+        	// Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
+        	
+    $('<p/>');
+    
+    $('<a/>',{'class':''});
+	
+	
 	$('<div/>', {
 		'class' : 'progress',
 		'id' : 'progress_test_1'
@@ -75,20 +115,47 @@ function createBar(message) {
 	
 	
 	$('#progress2').tooltip();
+	
+	
+	$('#progress1').css({
+	 'background-color': '#66FF66'
+	});
 }
 
 function updateMessages() {
 	var response = $.ajax({
 		type : "GET",
-		url : "hack.php",
+		url : "/hackq2/api/partnerInfo",
 		dataType : "json",
 		async : false,
 		cache : false,
-		complete : poll,
+		/*complete : poll,*/
 		timeout : 5000
 	}).responseText;
-	console.log(response);
+	//console.log(response);
 	var data = jQuery.parseJSON(response);
-	console.log(response);
+	console.log(data[0]);
+	for( var k in data[0] ){
+		console.log(k);
+	}
 	return data;
+}
+
+function getPartnerDetails(partnerID) {
+	var response = $.ajax({
+		type : "GET",
+		url : "/hackq2/api/partnerInfo/"+partnerID,
+		dataType : "json",
+		async : false,
+		cache : false,
+		/*complete : poll,*/
+	}).responseText;
+	//console.log(response);
+	var partner = jQuery.parseJSON(response);
+	console.log(partner);
+	console.log(partner.partnerID);
+	for( var k in partner){
+		console.log(k);
+	}
+	return partner;
 }
