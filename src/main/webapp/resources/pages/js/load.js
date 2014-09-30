@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	//eventListensers(eventListensers.$("div.container"));
+	//eventListensers($("div.container"));
 	//$('#progress1').attr('style',"width: 37%");
 	//$('#progress1').css({
 	// 'background-color': '#66FF66'
@@ -12,9 +12,20 @@ function poll() {
 }
 
 function eventListensers(object) {
-	object.addEventListener('load', function() {
+	object.onload(function() {
 		console.log('Test!');
 	}, false);
+}
+
+function loadD(args){
+	for(var k in $("a.btn btn-primary btn-lg")){
+		k.click(function(e){
+			e.preventDefault();
+			call(k.attr("ID"));
+			k.click();
+		});
+	}
+	
 }
 
 /**
@@ -57,6 +68,15 @@ function removeBars(bar) {
 }
 
 function createBar(message) {
+	
+	// <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal" id="ParterID">
+        	// Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
+        	
+    $('<p/>');
+    
+    $('<a/>',{'class':''});
+	
+	
 	$('<div/>', {
 		'class' : 'progress',
 		'id' : 'progress_test_1'
@@ -75,6 +95,11 @@ function createBar(message) {
 	
 	
 	$('#progress2').tooltip();
+	
+	
+	$('#progress1').css({
+	 'background-color': '#66FF66'
+	});
 }
 
 function updateMessages() {
