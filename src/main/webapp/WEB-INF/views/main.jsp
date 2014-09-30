@@ -51,6 +51,7 @@
 
 		<!-- hidden model -->
 		<%@ include file="detail.jsp" %>
+
 		<!-- hidden model -->
 			
 		<!-- Main jumbotron for a primary marketing message or call to action -->
@@ -63,7 +64,12 @@
 			</div>
 		</div>
 		<!-- end jumbo -->
-		
+        <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
+            Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
+            Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
+            Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
