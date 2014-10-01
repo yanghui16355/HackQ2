@@ -3,6 +3,8 @@ package com.expedia.lodging.connectivity.model;
 public class PartnerInfo {
 	private String partnerID;
 	
+	private String coordinateID;
+	
 	private String category;
 	
 	private MessageAggregator RQInS;
@@ -21,9 +23,9 @@ public class PartnerInfo {
 	
 	private MessageAggregator RSOutF;
 	
-	public PartnerInfo(String partnerID){
+	public PartnerInfo(String partnerID,String coordinateID){
 		this.partnerID = partnerID;
-		
+		this.coordinateID = coordinateID;
 	}
 
 	public String getPartnerID() {
@@ -104,6 +106,14 @@ public class PartnerInfo {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getCoordinateID() {
+		return coordinateID;
+	}
+
+	public void setCoordinateID(String coordinateID) {
+		this.coordinateID = coordinateID;
 	}
 	
 	

@@ -38,12 +38,12 @@ public class MessageService {
 		MessageAggregator hs4 = new MessageAggregator("RSOut","Success",1000,"Polaris","Hilton","Hilton","00CC00");
 		MessageAggregator hf4 = new MessageAggregator("RSOut","Fail",100,"Polaris","Hilton","Hilton","FF3333");
 		
-		PartnerInfo h = new PartnerInfo("Hilton");
+		PartnerInfo h = new PartnerInfo("Hilton","Expedia");
 		h.setCategory("ARI");
 		h.setRQInS(hs1);
 		h.setRQInF(hf1);
 		h.setRQOutS(hs2);
-		h.setRQOutF(hf2);
+        h.setRQOutF(hf2);
 		h.setRSInS(hs3);
 		h.setRSInF(hf3);
 		h.setRSOutS(hs4);
@@ -59,7 +59,7 @@ public class MessageService {
 		MessageAggregator ms4 = new MessageAggregator("RSOut","Success",100,"Polaris","Expedia","Marriott","33FF33");
 		MessageAggregator mf4 = new MessageAggregator("RSOut","Fail",10,"Polaris","Expedia","Marriott","FF9999");
 		
-		PartnerInfo m = new PartnerInfo("Marriott");
+		PartnerInfo m = new PartnerInfo("Marriott","NotifSP");
 		m.setCategory("Booking");
 		m.setRQInS(ms1);
 		m.setRQInF(mf1);
@@ -69,11 +69,35 @@ public class MessageService {
 		m.setRSInF(mf3);
 		m.setRSOutS(ms4);
 		m.setRSOutF(mf4);
+
+        MessageAggregator gs1 = new MessageAggregator("RQIn","Success",100,"Hotel.com","Polaris","G6","33FF33");
+        MessageAggregator gf1 = new MessageAggregator("RQIn","Fail",5,"Hotel.com","Polaris","G6","FF9999");
+        MessageAggregator gs2 = new MessageAggregator("RQOut","Success",100,"Polaris","G6","G6","33FF33");
+        MessageAggregator gf2 = new MessageAggregator("RQOut","Fail",3,"Polaris","G6","G6","FF9999");
+        MessageAggregator gs3 = new MessageAggregator("RSIn","Success",100,"G6","Polaris","G6","33FF33");
+        MessageAggregator gf3 = new MessageAggregator("RSIn","Fail",8,"G6","Polaris","G6","FF9999");
+        MessageAggregator gs4 = new MessageAggregator("RSOut","Success",100,"Polaris","Hotel.com","G6","33FF33");
+        MessageAggregator gf4 = new MessageAggregator("RSOut","Fail",10,"Polaris","Hotel.com","G6","FF9999");
+
+        PartnerInfo g = new PartnerInfo("G6","NotifSP");
+        g.setCategory("Booking");
+        g.setRQInS(ms1);
+        g.setRQInF(mf1);
+        g.setRQOutS(ms2);
+        g.setRQOutF(mf2);
+        g.setRSInS(ms3);
+        g.setRSInF(mf3);
+        g.setRSOutS(ms4);
+        g.setRSOutF(mf4);
 		
 		partnerInfo.add(h);
 		partnerInfo.add(m);
+        partnerInfo.add(g);
 		
 		partnerMap.put(h.getPartnerID(), h);
 		partnerMap.put(m.getPartnerID(), m);
+        partnerMap.put(g.getPartnerID(), g);
+
+
 	}
 }

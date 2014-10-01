@@ -64,11 +64,11 @@
 			</div>
 		</div>
 		<!-- end jumbo -->
-        <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
+        <p id="Hilton"><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
             Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
+        <p id="Marriott"><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
             Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
-        <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
+        <p id="G6"><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
             Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
