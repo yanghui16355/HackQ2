@@ -16,6 +16,8 @@ public class MessageAggregator {
 	
 	private String color;
 	
+	private String percentage; 
+	
 	public MessageAggregator(String type,String status,int amount,String sourceID,String destinationID,String partnerID,String color){
 		this.type = type;
 		this.status = status;
@@ -81,7 +83,12 @@ public class MessageAggregator {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	
-	
-	
+
+	public String getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(String percentage) {
+		this.percentage = percentage;
+	}
 }
