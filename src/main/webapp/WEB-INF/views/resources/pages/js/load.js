@@ -34,9 +34,17 @@ function removeBars(bar) {
  * 
  */
 function createBars(message,counter,partnerID) {	
+	
 	args = {};
-	args["parterID"] = partnerID;
+	args["partnerID"] = partnerID;
+	args["coordinateID"] = message["coordinateID"];
+	args["category"] = message["category"]; 
 	for(var k in message){
+		
+		if( k == "partnerID" || k == "coordinateID" || k=="category"){
+			continue;
+		}
+		
 		var _identity = message[k]["sourceID"] + "_" + message[k]["destinationID"] + "_" + message[k]["type"];
 		args[k+"_id"] = _identity;
 		args[k+"_type"] = message[k]["type"];
@@ -45,14 +53,24 @@ function createBars(message,counter,partnerID) {
 		args[k+"_sourceID"] = message[k]["sourceID"];
 		args[k+"_destID"] = message[k]["destinationID"];
 		args[k+"_amount"] = message[k]["amount"];
+		args[k+"_width"] = message[k]["percentage"];
 	}
+	console.log(args);
 	if( counter % 2 == 0 ){
 		$('<div class="jumbotron">'+getContainerTemplate(args)+'</div>').insertAfter("#main_jumbotorn") ;
 	}else{
 		$(getContainerTemplate(args)).insertAfter("#main_jumbotorn") ;	
 	}  	 	
 	for(var k in message){
-		$("#" + message[k]["sourceID"] + "_" + message[k]["destinationID"] + "_" + message[k]["type"]).tooltip();
+		if(  k == "partnerID" || k == "coordinateID" || k=="category" ){
+			continue;
+		}
+		var _identity = message[k]["sourceID"] + "_" + message[k]["destinationID"] + "_" + message[k]["type"];
+		console.log(message[k]["color"]);
+		$('#progress_'+_identity).css({
+	 		'background-color': message[k]["color"]
+		});
+		//$("#" + message[k]["sourceID"] + "_" + message[k]["destinationID"] + "_" + message[k]["type"]).tooltip();
 	}
 }
 
@@ -76,9 +94,9 @@ function getContainerTemplate(args){
 	
 	var content = 
 	   '<div class="container">'+
-			'<p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal" id="'+args["partnerID"]+'"> ' + args["partnerID"] + "---->" + args["_destID"] + ' </a></p>'+
+			'<p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal" id="'+args.partnerID+'"> ' + args["partnerID"] + "---->" + args["coordinateID"] +"------>" +args["partnerID"]+ ' </a></p>'+
 			'<div class="progress">'+
-				'<div id="progress_'+args['rqinS_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rqinS_width']+'%">'+
+				'<div id="progress_'+args['rqinS_id']+'" class="progress-bar progress-bar-success" style="width: '+args.rqinS_width+'%">'+
 					'<span>'+args['width']+'% Complete (success)</span>'+
 				'</div>'+
 				'<div id="progress_'+args['rqoutS_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rqoutS_width']+'%">'+
