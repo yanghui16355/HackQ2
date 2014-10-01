@@ -50,8 +50,12 @@
 
 
 		<!-- hidden model -->
+<<<<<<< HEAD
+		<%@ include file="_detail.jsp" %>
+=======
 		<%@ include file="detail.jsp" %>
 
+>>>>>>> 2b667872261b38d219d4acb525d7c7573f319f8b
 		<!-- hidden model -->
 			
 		<!-- Main jumbotron for a primary marketing message or call to action -->
@@ -64,11 +68,11 @@
 			</div>
 		</div>
 		<!-- end jumbo -->
-        <p id="Hilton"><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
+        <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
             Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
-        <p id="Marriott"><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
+        <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
             Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
-        <p id="G6"><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
+        <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal">
             Expedia.com ---------> Hilton ---------> Expedia.com &raquo;</a></p>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

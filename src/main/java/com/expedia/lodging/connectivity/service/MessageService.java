@@ -1,5 +1,6 @@
 package com.expedia.lodging.connectivity.service;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Map;
 
 import com.expedia.lodging.connectivity.model.MessageAggregator;
 import com.expedia.lodging.connectivity.model.PartnerInfo;
+import com.expedia.lodging.connectivity.util.FormatUtil;
 
 public class MessageService {
 	
@@ -29,14 +31,32 @@ public class MessageService {
 	private void createParterInfoList(){
 		partnerInfo = new ArrayList<PartnerInfo>();
 		partnerMap = new HashMap<String,PartnerInfo>();
-		MessageAggregator hs1 = new MessageAggregator("RQIn","Success",1000,"Hilton","Polaris","Hilton","00CC00");
-		MessageAggregator hf1 = new MessageAggregator("RQIn","Fail",50,"Hilton","Polaris","Hilton","FF3333");
-		MessageAggregator hs2 = new MessageAggregator("RQOut","Success",1000,"Polaris","Expedia","Hilton","00CC00");
-		MessageAggregator hf2 = new MessageAggregator("RQOut","Fail",30,"Polaris","Expedia","Hilton","FF3333");
-		MessageAggregator hs3 = new MessageAggregator("RSIn","Success",1000,"Expedia","Polaris","Hilton","00CC00");
-		MessageAggregator hf3 = new MessageAggregator("RSIn","Fail",80,"Expedia","Polaris","Hilton","FF3333");
-		MessageAggregator hs4 = new MessageAggregator("RSOut","Success",1000,"Polaris","Hilton","Hilton","00CC00");
-		MessageAggregator hf4 = new MessageAggregator("RSOut","Fail",100,"Polaris","Hilton","Hilton","FF3333");
+		MessageAggregator hs1 = new MessageAggregator("RQIn","Success",1000,"Hilton","Polaris","Hilton","#FF3333");
+		MessageAggregator hf1 = new MessageAggregator("RQIn","Fail",50,"Hilton","Polaris","Hilton","#00CC00");
+		double result = hs1.getAmount() + hf1.getAmount();
+		hs1.setPercentage(FormatUtil.format(hs1.getAmount()/result * 25));
+		hf1.setPercentage(FormatUtil.format(hf1.getAmount()/result * 25));
+		
+		
+		MessageAggregator hs2 = new MessageAggregator("RQOut","Success",1000,"Polaris","Expedia","Hilton","#FF3333");
+		MessageAggregator hf2 = new MessageAggregator("RQOut","Fail",30,"Polaris","Expedia","Hilton","#00CC00");
+		double result2 = hs2.getAmount() + hf2.getAmount();
+		hs2.setPercentage(FormatUtil.format(hs2.getAmount()/result2 * 25));
+		hf2.setPercentage(FormatUtil.format(hf2.getAmount()/result2 * 25));
+		
+		MessageAggregator hs3 = new MessageAggregator("RSIn","Success",1000,"Expedia","Polaris","Hilton","#FF3333");
+		MessageAggregator hf3 = new MessageAggregator("RSIn","Fail",80,"Expedia","Polaris","Hilton","#00CC00");
+		double result3 = hs3.getAmount() + hf3.getAmount();
+		hs3.setPercentage(FormatUtil.format(hs3.getAmount()/result3 * 25));
+		hf3.setPercentage(FormatUtil.format(hf3.getAmount()/result3 * 25));
+		
+		MessageAggregator hs4 = new MessageAggregator("RSOut","Success",1000,"Polaris","Hilton","Hilton","#FF3333");
+		MessageAggregator hf4 = new MessageAggregator("RSOut","Fail",100,"Polaris","Hilton","Hilton","#00CC00");
+		double result4 = hs4.getAmount() + hf4.getAmount();
+		hs4.setPercentage(FormatUtil.format(hs4.getAmount()/result4 * 25 ));
+		hf4.setPercentage(FormatUtil.format(hf4.getAmount()/result4 * 25 ));
+		
+		
 		
 		PartnerInfo h = new PartnerInfo("Hilton","Expedia");
 		h.setCategory("ARI");
@@ -99,5 +119,12 @@ public class MessageService {
         partnerMap.put(g.getPartnerID(), g);
 
 
+	}
+	
+	public static void main(String[] args){
+		DecimalFormat df = new DecimalFormat();
+	    df.setMaximumFractionDigits(2);
+	    df.setMinimumFractionDigits(2);
+	    System.out.println(df.format(0.21123123d) + " kg\n");
 	}
 }
