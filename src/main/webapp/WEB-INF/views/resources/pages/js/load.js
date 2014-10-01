@@ -45,7 +45,7 @@ function createBars(message,counter,partnerID) {
 			continue;
 		}
 		
-		var _identity = message[k]["sourceID"] + "_" + message[k]["destinationID"] + "_" + message[k]["type"];
+		var _identity = message[k]["sourceID"] + "_" + message[k]["destinationID"] + "_" + message[k]["type"] + "_" + message[k]["status"];
 		args[k+"_id"] = _identity;
 		args[k+"_type"] = message[k]["type"];
 		args[k+"_status"] = message[k]["status"];
@@ -61,12 +61,12 @@ function createBars(message,counter,partnerID) {
 	}else{
 		$(getContainerTemplate(args)).insertAfter("#main_jumbotorn") ;	
 	}  	 	
+	
 	for(var k in message){
 		if(  k == "partnerID" || k == "coordinateID" || k=="category" ){
 			continue;
 		}
-		var _identity = message[k]["sourceID"] + "_" + message[k]["destinationID"] + "_" + message[k]["type"];
-		console.log(message[k]["color"]);
+		var _identity = message[k]["sourceID"] + "_" + message[k]["destinationID"] + "_" + message[k]["type"]+ "_" + message[k]["status"];
 		$('#progress_'+_identity).css({
 	 		'background-color': message[k]["color"]
 		});
@@ -94,27 +94,27 @@ function getContainerTemplate(args){
 	
 	var content = 
 	   '<div class="container">'+
-			'<p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#myModal" id="'+args.partnerID+'"> ' + args["partnerID"] + "---->" + args["coordinateID"] +"------>" +args["partnerID"]+ ' </a></p>'+
+			'<p><a class="btn btn-primary btn-sm btn-lg" role="button" data-toggle="modal" data-target="#myModal" id="'+args.partnerID+'"> ' + args["partnerID"] + "---->" + args["coordinateID"] +"------>" +args["partnerID"]+ ' </a></p>'+
 			'<div class="progress">'+
-				'<div id="progress_'+args['rqinS_id']+'" class="progress-bar progress-bar-success" style="width: '+args.rqinS_width+'%">'+
-					'<span>'+args['width']+'% Complete (success)</span>'+
-				'</div>'+
-				'<div id="progress_'+args['rqoutS_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rqoutS_width']+'%">'+
-					'<span>amount </span>'+
-				'</div>'+
-				'<div id="progress_'+args['rsinS_id']+'" class="progress-bar progress-bar-success" data-toggle="tooltip" data-placement="top" title="Tooltip on left" class="progress-bar progress-bar-danger" style="width: 12.5%">'+
-					'<span>amount (danger)</span>'+
-				'</div>'+
-				'<div id="progress_'+args['rsoutS_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rsoutS_width']+'%">'+
-					'<span>amount (warning)</span>'+
+				'<div id="progress_'+args['rqinS_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rqinS_width']+'%">'+
+					'<span>Complete (success)</span>'+
 				'</div>'+
 				'<div id="progress_'+args['rqinF_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rqinF_width']+'%">'+
-					'<span>amount (warning)</span>'+
+					'<span>amount </span>'+
+				'</div>'+
+				'<div id="progress_'+args['rqoutS_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rqoutS_width']+'%">'+
+					'<span>amount (danger)</span>'+
 				'</div>'+
 				'<div id="progress_'+args['rqoutF_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rqoutF_width']+'%">'+
 					'<span>amount (warning)</span>'+
 				'</div>'+
+				'<div id="progress_'+args['rsinS_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rsinS_width']+'%">'+
+					'<span>amount (warning)</span>'+
+				'</div>'+
 				'<div id="progress_'+args['rsinF_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rsinF_width']+'%">'+
+					'<span>amount (warning)</span>'+
+				'</div>'+
+				'<div id="progress_'+args['rsoutS_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rsoutS_width']+'%">'+
 					'<span>amount (warning)</span>'+
 				'</div>'+
 				'<div id="progress_'+args['rsoutF_id']+'" class="progress-bar progress-bar-success" style="width: '+args['rsoutF_width']+'%">'+
